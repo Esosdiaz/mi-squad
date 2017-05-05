@@ -1,39 +1,46 @@
 
-function MiembroSquad(nombre, apellido, edad, hobbie1, hobbie2, hobbie3){
+function MiembroSquad(nombre, apellido, edad, hobbies){
 	this.nombre = nombre
 	this.apellido = apellido
 	this.edad = edad
-	this.hobbie1 = hobbie1
-	this.hobbie2 = hobbie2
-	this.hobbie3 = hobbie3
-	this.mostrar = function(){
+	this.hobbies = hobbies
+	/*this.mostrar = function(){
 		var mostrar = "<p><strong> Nombre: </strong>" + this.nombre + " " + this.apellido + "<br><strong> Edad: </strong>" + this.edad  + "<br><strong> Hobbies: </strong></p><li>" + this.hobbie1 + "</li><li>" + this.hobbie2 + "</li> <li>" + hobbie3 + "</li><br><br></p>";
 		return mostrar;
-	}	
+	}*/	
 }
 
-const MartinaC = new MiembroSquad("Martina", "Cobarrubias", 27, "Escuchar música", "Gatos", "Bailar")
-document.getElementById("martinaC").innerHTML = MartinaC.mostrar(); 
+function principal(){
+	var arregloMiembros = [];
 
-const FaD = new MiembroSquad("Fa", "Díaz", 31, "Dormir", "Jugar con mi gata", "Caminar")
-document.getElementById("faD").innerHTML = FaD.mostrar();
+	const MartinaC = new MiembroSquad("Martina", "Cobarrubias", 27, ["Escuchar música", "Gatos", "Bailar"])
+	const FaD = new MiembroSquad("Fa", "Díaz", 31, ["Dormir", "Jugar con mi gata", "Caminar"])
+	const JoselynG = new MiembroSquad("Joselyn", "Grez", 22, ["Ir al cine", "Jugar videojuegos", "Ir a la playa"])
+	const PauliH = new MiembroSquad("Paulina", "Huañaco", 25, ["Escuchar música", "Correr", "Andar en bici"])
+	const AleM = new MiembroSquad("Alejandra", "Morales", 27, ["Hacer deporte", "Ver películas", "Cocinar"])
+	const PauR = new MiembroSquad("Paulina", "Rojas", 20, ["Leer", "LotR", "Viajar"])
+	const ValeR = new MiembroSquad("Vale", "Rodriguez", 25, ["Andar en bici", "Conocer gente", "Comer"])
+	const ValeS = new MiembroSquad("Vale", "Spuler", 21, ["Ver películas", "Dormir", "Comer"])
 
-const JoselynG = new MiembroSquad("Joselyn", "Grez", 22, "Ir al cine", "Jugar videojuegos", "Ir a la playa")
-document.getElementById("joselynG").innerHTML = JoselynG.mostrar();
+	arregloMiembros.push(MartinaC);  
+	arregloMiembros.push(FaD);
+	arregloMiembros.push(JoselynG);
+	arregloMiembros.push(PauliH);
+	arregloMiembros.push(AleM);
+	arregloMiembros.push(PauR);
+	arregloMiembros.push(ValeR);
+	arregloMiembros.push(ValeS);
 
-const PauliH = new MiembroSquad("Paulina", "Huañaco", 25, "Escuchar música", "Correr", "Andar en bici")
-document.getElementById("pauliH").innerHTML = PauliH.mostrar();
+	/*arregloMiembros.forEach(function (el){
+    	var fichaMiembros = document.getElementById("fichaMiembros");
+    	fichaMiembros.innerHTML += "<div><b>Nombre: </b>" + el.nombre + " " + el.apellido + "<br><b>Edad: </b>" + el.edad + " años <br>" + "<b>Hobbies: </b><ul><li>" + el.hobbies[0] + "</li><li>" + el.hobbies[1] + "</li><li>" + el.hobbies[2] + "</li></ul></div><br>";
+  	});*/
+  	for(var i = 0; i< arregloMiembros.length; i++){
+  		var fichaMiembros = document.getElementById("fichaMiembros");
+    	fichaMiembros.innerHTML += "<div id='m"+i+"'><b>Nombre: </b>" + arregloMiembros[i].nombre + " " + arregloMiembros[i].apellido + "<br><b>Edad: </b>" + arregloMiembros[i].edad + " años <br>" + "<b>Hobbies: </b><ul><li>" + arregloMiembros[i].hobbies[0] + "</li><li>" + arregloMiembros[i].hobbies[1] + "</li><li>" + arregloMiembros[i].hobbies[2] + "</li></ul><textarea id='comentarios-m"+i+"' row='30' col='10'/> </textarea></div>";
+  	}
+return arregloMiembros;
+}
 
-const AleM = new MiembroSquad("Alejandra", "Morales", 27, "Hacer deporte", "Ver películas", "Cocinar")
-document.getElementById("aleM").innerHTML = AleM.mostrar();
-
-const PauR = new MiembroSquad("Paulina", "Rojas", 20, "Leer", "LotR", "Viajar")
-document.getElementById("pauR").innerHTML = PauR.mostrar();
-
-const ValeR = new MiembroSquad("Vale", "Rodriguez", 25, "Andar en bici", "Conocer gente", "Comer")
-document.getElementById("valeR").innerHTML = ValeR.mostrar();
-
-const ValeS = new MiembroSquad("Vale", "Spuler", 21, "Ver películas", "Dormir", "Comer")
-document.getElementById("valeS").innerHTML = ValeS.mostrar();
-
+principal();
 
