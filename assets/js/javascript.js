@@ -7,7 +7,8 @@ function MiembroSquad(nombre, apellido, edad, hobbie1, hobbie2, hobbie3){
 	this.hobbie2 = hobbie2
 	this.hobbie3 = hobbie3
 	this.mostrar = function(){
-		document.write("<p></center><strong> Nombre: </strong>" + this.nombre + " " + this.apellido + "<br><strong> Edad: </strong>" + this.edad  + "<br><strong> Hobbies: </strong></p><li>" + this.hobbie1 + "</li><li>" + this.hobbie2 + "</li> <li>" + hobbie3 + "</li><br><br></center></p>")
+		var mostrar = "<p><strong> Nombre: </strong>" + this.nombre + " " + this.apellido + "<br><strong> Edad: </strong>" + this.edad  + "<br><strong> Hobbies: </strong></p><li>" + this.hobbie1 + "</li><li>" + this.hobbie2 + "</li> <li>" + hobbie3 + "</li><br><br></p>";
+		return mostrar;
 	}	
 }
 
