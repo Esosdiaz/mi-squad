@@ -1,15 +1,25 @@
+var idCont = 0;
 
-function MiembroSquad(nombre, apellido, edad, hobbies){
+function MiembroSquad(nombre, apellido, edad, hobbies, imagen){
 	this.nombre = nombre
 	this.apellido = apellido
 	this.edad = edad
 	this.hobbies = hobbies
-	/*this.mostrar = function(){
-		var mostrar = "<p><strong> Nombre: </strong>" + this.nombre + " " + this.apellido + "<br><strong> Edad: </strong>" + this.edad  + "<br><strong> Hobbies: </strong></p><li>" + this.hobbie1 + "</li><li>" + this.hobbie2 + "</li> <li>" + hobbie3 + "</li><br><br></p>";
+	this.id = idCont++;
+	this.mostrar = function(){
+		
+		var mostrar = "<div id='m"+idCont+"'><b>Nombre: </b>" + this.nombre + " " + this.apellido + "<br><b>Edad: </b>" + this.edad + " años <br>" + "<b>Hobbies: </b><ul><li>" + this.hobbies[0] + "</li><li>" + this.hobbies[1] + "</li><li>" + this.hobbies[2] + "</li></ul><textarea id='comentarios-m"+this.id+"' row='40' col='20'/> </textarea> 	<button type = 'button' id='boton-agregar' onclick='ComentariosBoton("+this.id+");'> Agregar! </button></div>";
 		return mostrar;
-	}*/	
+	}
 }
 
+function Comentarios(id, comentario, likes){
+	this.id = "comentarios-m"+id
+	this.comentario = comentario
+	this.likes = likes
+}
+
+    
 function principal(){
 	var arregloMiembros = [];
 
@@ -31,16 +41,27 @@ function principal(){
 	arregloMiembros.push(ValeR);
 	arregloMiembros.push(ValeS);
 
-	/*arregloMiembros.forEach(function (el){
-    	var fichaMiembros = document.getElementById("fichaMiembros");
-    	fichaMiembros.innerHTML += "<div><b>Nombre: </b>" + el.nombre + " " + el.apellido + "<br><b>Edad: </b>" + el.edad + " años <br>" + "<b>Hobbies: </b><ul><li>" + el.hobbies[0] + "</li><li>" + el.hobbies[1] + "</li><li>" + el.hobbies[2] + "</li></ul></div><br>";
-  	});*/
+	var fichaMiembros = document.getElementById("fichaMiembros")
   	for(var i = 0; i< arregloMiembros.length; i++){
-  		var fichaMiembros = document.getElementById("fichaMiembros");
-    	fichaMiembros.innerHTML += "<div id='m"+i+"'><b>Nombre: </b>" + arregloMiembros[i].nombre + " " + arregloMiembros[i].apellido + "<br><b>Edad: </b>" + arregloMiembros[i].edad + " años <br>" + "<b>Hobbies: </b><ul><li>" + arregloMiembros[i].hobbies[0] + "</li><li>" + arregloMiembros[i].hobbies[1] + "</li><li>" + arregloMiembros[i].hobbies[2] + "</li></ul><textarea id='comentarios-m"+i+"' row='30' col='10'/> </textarea></div>";
+  		  		console.log(arregloMiembros[i]);
+
+  		fichaMiembros.innerHTML += arregloMiembros[i].mostrar();
   	}
 return arregloMiembros;
 }
 
 principal();
 
+
+function ComentariosBoton(id){
+	var comments = []; //array vacío
+	debugger;
+	var input = document.getElementById("comentarios-m"+i);
+	var imprComment = document.getElementById("m"+i);
+	var newComm = new Comentarios(id, input.value, 0);
+	comments.push(newComm);
+	imprComment.innerHTML += "<p>"+newComm.comentario+"</p>"; // imprime en el HTML
+  	input.value = ""; //para vaciar 
+ 	console.log(comments);	
+	console.log(newComm);
+}
