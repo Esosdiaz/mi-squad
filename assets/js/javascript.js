@@ -16,7 +16,7 @@ function MiembroSquad(nombre, apellido, edad, hobbies, imagen){
 	}
 }
 
-//Variable para crear ID dinamicos en los comentarios. Esto sirve para relacionar los likes a cada comentario.
+//Variable para crear ID dinamicos en los comentarios. 
 var comentarioIdCont = 0;
 
 //Constructor para comentarios.
@@ -35,15 +35,19 @@ function principal(){
 	const JoselynG = new MiembroSquad("Joselyn", "Grez", 22, ["Ir al cine", "Jugar videojuegos", "Ir a la playa"], "https://scontent.fsst1-1.fna.fbcdn.net/v/t1.0-9/15541209_1819455288311183_8614525934443571280_n.jpg?oh=ec4e44ff138bfc2d33f16f44871eb069&oe=59BE89C1")
 	const PauliH = new MiembroSquad("Paulina", "Huañaco", 25, ["Escuchar música", "Correr", "Andar en bici"], "https://scontent.fsst1-1.fna.fbcdn.net/v/t31.0-8/p960x960/17097565_270304496715199_554639343061705710_o.jpg?oh=21f018a737b963b706bd397f0108de86&oe=59BEA23C")
 	const AleM = new MiembroSquad("Alejandra", "Morales", 27, ["Hacer deporte", "Ver películas", "Cocinar"], "https://scontent.fsst1-1.fna.fbcdn.net/v/t1.0-9/11693803_10206575353524460_4986542347816085853_n.jpg?oh=8321c9cfb33776e049af7818e24e8294&oe=597425FE")
-	const PauR = new MiembroSquad("Paulina", "Rojas", 20, ["Leer", "LotR", "Viajar", "https://www.facebook.com/photo.php?fbid=1024447528958&set=a.1612152741221.89427.1158350115&type=3&theater"])
-	const ValeR = new MiembroSquad("Vale", "Rodriguez", 25, ["Andar en bici", "Conocer gente", "Comer"], "https://scontent.fsst1-1.fna.fbcdn.net/v/t1.0-9/15895332_1301164479940726_4970342182699803739_n.jpg?oh=54d2811ed55f8b82e344fcbda0703d28&oe=59BB3B17")
+	const SuO = new MiembroSquad("Susana", "Opazo", 25, ["Apoyar a la U", "Leer", "Beber té como señora"], "https://scontent.faep3-1.fna.fbcdn.net/v/t1.0-1/13015316_3410315615315_2453493158885669918_n.jpg?oh=5b6dfcf24de00dfd00da9f8bec3b5667&oe=59B7EFEC")
+	const PauR = new MiembroSquad("Paulina", "Rojas", 20, ["Leer", "LotR", "Viajar"], "https://scontent.faep3-1.fna.fbcdn.net/v/t1.0-9/18342189_10212590812702786_3405789562533140191_n.jpg?oh=eb2bff8eb8f309166ebab6f3821bd3fc&oe=59760595")
+	const ValeR = new MiembroSquad("Vale", "Rodriguez", 25, ["Andar en bici", "Conocer gente", "Comer"], "https://scontent.faep3-1.fna.fbcdn.net/v/t1.0-9/17757205_1385096158214224_1837975401642058947_n.jpg?oh=59c232629c9ae9f9580492e32867afcd&oe=59BF24E9")
 	const ValeS = new MiembroSquad("Vale", "Spuler", 21, ["Ver películas", "Dormir", "Comer"], "https://scontent.fsst1-1.fna.fbcdn.net/v/t1.0-9/13051754_10209010849890889_4971832699635125059_n.jpg?oh=8f381931fd8730fc62be2eb14db4d1d1&oe=5982673B")
+
+
 
 	arregloMiembros.push(MartinaC);  
 	arregloMiembros.push(FaD);
 	arregloMiembros.push(JoselynG);
 	arregloMiembros.push(PauliH);
 	arregloMiembros.push(AleM);
+	arregloMiembros.push(SuO)
 	arregloMiembros.push(PauR);
 	arregloMiembros.push(ValeR);
 	arregloMiembros.push(ValeS);
@@ -57,18 +61,16 @@ return arregloMiembros;
 
 principal();
 
-
-
-function ComentariosBoton(id){ //esto no funciona
-	var comments = []; //array vacío
-	var input = document.getElementById("comentarios-m"+i);
-	var imprComment = document.getElementById("m"+i);
-	var newComm = new Comentarios(id, input.value, 0);
-	comments.push(newComm);
-	imprComment.innerHTML += "<p>"+newComm.comentario+"</p>"; // imprime en el HTML
+var arrayComentarios = [] // array que recibe los comentarios(objetos)
+function ComentariosBoton(id){ //Funcion que crea los comentarios, cada uno con su ID respectivo
+	var input = document.getElementById("comentarios-m"+id); // busca la caja de comentarios respectivos con su id
+	var imprComment = document.getElementById("comentariosAgregados-"+id); // va al div especificado para esto. 
+	var newComm = new Comentarios(id, input.value, 0);  //instancia de creacion de input. 
+  	var idComentario = "comentario-id-"+newComm.id; //con esta variable, el comentario tb va a tener un id asociado
+	imprComment.innerHTML += "<p>"+newComm.comentario+"</p>" // IMPRIME
+    arrayComentarios.push(newComm); // guarda el nuevo comentario en el nuevo array de más arriba
   	input.value = ""; //para vaciar 
- 	console.log(comments);	
-	console.log(newComm);
-}
+    }
+
 
 console.log(newComm);
